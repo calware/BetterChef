@@ -10,11 +10,11 @@ Notable changes include:
 - Glaze damage buffs and smart knockback (scales based on whether or not Chef is in the air, looking upward (reduced for suicide prevention), or looking downwards (amplified in comparison to looking straight forward))
 
 ## Showcase
-![Imgur Image](https://i.imgur.com/JbL2Apm.gif)
+![glaze knockback](/assets/glaze_knockback.gif)
 
-![Imgur Image](https://i.imgur.com/kyhuuRs.gif)
+![sear demo](/assets/sear_demo.gif)
 
-![Imgur Image](https://i.imgur.com/uU0tSVT.gif)
+![roll comparison](/assets/roll_comparison.gif)
 
 ## Configuration
 Below is each change more precisely, along with the section and variable name (which can be found in the configuration file for BetterChef) that allows you to modify the values for each change (or disable certain changes altogether).
