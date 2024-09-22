@@ -42,7 +42,7 @@ namespace StormTweaks {
             public static float SearDamageOverTimeValue => Bind<float>("CHEF: Sear", "Sear Damage Over Time Value", "The raw damage value applied on each tick to the Sear burning effect", 10.0f);
             public static float SearDamageOverTimeDuration => Bind<float>("CHEF: Sear", "Sear Damage Over Time Duration", "The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)", 0.0f);
             public static bool SearCanCancel => Bind<bool>("CHEF: Sear", "Sear Can Cancel", "Allow the user to cancel Sear mid-Sear by either releasing the skill activation input (in hold mode), or by activating the skill again (in toggle mode)", true);
-            // public static bool SearHoldMode => Bind<bool>("CHEF: Sear", "Sear Hold Mode", "Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)", true);
+            // public static bool SearHoldMode => Bind<bool>("CHEF: Sear", "Sear Hold Mode", "Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)", false);
             public static float SearBaseExitDuration => Bind<float>("CHEF: Sear", "Sear Base Exit Duration", "Sear base exit duration", 0.4f);
             public static float SearBaseFlamethrowerDuration => Bind<float>("CHEF: Sear", "Sear Base Flamethrower Duration", "Sear base flamethrower duration", 3.0f);
             public static float SearTickDamageCoefficient => Bind<float>("CHEF: Sear", "Sear Tick Damage Coefficient", "Sear tick damage coefficient (note: this setting is enabled upon a configured value greater than zero--default is 6)", 0.0f);
@@ -140,7 +140,7 @@ namespace StormTweaks {
                     }
 
                     // Determine whether or not the user wants to put this into toggle mode (NOTE: THIS WILL REQUIRE A CHANGE TO THE SEAR CAN CANCEL SETTING)
-                    Paths.SkillDef.ChefSear.mustKeyPress = true; // SearHoldMode;
+                    // Paths.SkillDef.ChefSear.mustKeyPress = true; // SearHoldMode;
                 }
 
                 if (Settings.DiceRaiseProcCoefficient)
@@ -379,10 +379,11 @@ namespace StormTweaks {
             // allow the user to cancel sear
             if (Settings.SearCanCancel)
             {
-                // if (self.inputBank.skill2.down == false)
-                // {
-                //     self.flamethrowerDuration = 0;
-                // }
+                // toggle mode here...
+                if (self.inputBank.skill2.down == false)
+                {
+                    self.flamethrowerDuration = 0;
+                }
             }
 
             orig(self);
