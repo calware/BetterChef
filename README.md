@@ -35,7 +35,7 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 
 ## Changes to Roll
 ### Overview
-- Damage increased from 500%-800% to 600%-1200%, stunning enemies upon hit
+- Damage increased from 500%-800% to 600%-1200%
 - Damage, speed, and duration scale with each charge
 - Can be canceled mid-roll
 - Knockback to enemies can be configured
@@ -70,7 +70,7 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 - **Sear Apply Burning Damage Over Time** (bool, default: true) - Make the damage over time modifier for Sear apply additional fire damage for a longer period
 - **Sear Damage Over Time Value** (float, default: 10.0f) - The raw damage value applied on each tick to the Sear burning effect
 - **Sear Damage Over Time Duration** (float, default: 0.0f) - The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)
-- **Sear Can Cancel** (bool, default: true) - Allow the user to cancel Sear mid-Sear by either releasing the skill activation input (in hold mode), or by activating the skill again (in toggle mode)
+- **Sear Can Cancel** (bool, default: true) - Allow the user to cancel Sear mid-Sear by releasing the skill activation input
 - **Sear Base Exit Duration** (float, default: 0.4f) - Sear base exit duration
 - **Sear Base Flamethrower Duration** (float, default: 3.0f) - Sear base flamethrower duration
 - **Sear Tick Damage Coefficient** (float, default: 0.0f) - Sear tick damage coefficient (note: this setting is enabled upon a configured value greater than zero--default is 6)
