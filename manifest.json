@@ -1,6 +1,6 @@
 {
 	"name": "BetterChef",
-	"version_number": "1.0.0",
+	"version_number": "1.0.2",
 	"website_url": "https://github.com/calware/BetterChef",
 	"description": "Fixes, buffs, and customization for Chef",
 	"dependencies": [
