@@ -1,11 +1,11 @@
 # libs and build directories
-StormTweaks/bin
-StormTweaks/obj
+BetterChef/bin
+BetterChef/obj
 build.sh
-StormTweaks/libs
+BetterChef/libs
 build
 MassiveFraud.zip
-StormTweaks/*.dll
+BetterChef/*.dll
 
 BetterChefPkg.zip
 
