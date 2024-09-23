@@ -78,7 +78,7 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 - **Sear Apply Burning Damage Over Time** (bool, default: true) - Make the damage over time modifier for Sear apply additional fire damage for a longer period
 - **Sear Damage Over Time Value** (float, default: 10.0) - The raw damage value applied on each tick to the Sear burning effect
 - **Sear Damage Over Time Duration** (float, default: 0) - The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)
-- **Sear Can Cancel** (bool, default: true) - Allow the user to cancel Sear mid-Sear by releasing the skill activation input
+- **Sear Can Cancel** (bool, default: true) - Allow the user to cancel Sear mid-Sear by either releasing the skill activation input (in hold activation mode), or by pressing the activation input again while Sear is going (in toggle activation mode, which is the default)
 - **Sear Hold Mode** (bool, default: false) - Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)
 - **Sear Base Exit Duration** (float, default: 0.4) - Sear base exit duration
 - **Sear Base Flamethrower Duration** (float, default: 3.0) - Sear base flamethrower duration
