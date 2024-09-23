@@ -1,5 +1,5 @@
 # 1.0.4
-- Implemented Sear hold mode and made this the default activation mode
+- Implemented Sear toggle mode and made this the default activation mode
 - Fixed *some* issues with custom item descriptions not displaying on the Chef character selection screen
 - Removed game libraries from GitHub source tree
 - Merged ThunderStore package CHANGELOG.md and README.md files and implemented script to generate mod package automatically
