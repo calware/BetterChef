@@ -7,7 +7,7 @@
 - Updated README.md with new configuration options
 - Added notes about RiskOfOptions (and mods of the sort) + StormTweaks compatibility to README.md
 - Added to list of known bugs in README.md
-- Fixed typos in README.md
+- Fixed typo in README.md
 
 # 1.0.3
 - Added GIFs back to README.md
