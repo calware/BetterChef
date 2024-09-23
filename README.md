@@ -10,11 +10,17 @@ Notable changes include:
 - Glaze damage buffs and smart knockback (scales based on whether or not Chef is in the air, looking upward (reduced for suicide prevention), or looking downwards (amplified in comparison to looking straight forward))
 
 ## Showcase
-![glaze knockback](/assets/glaze_knockback.gif)
+![](https://github.com/calware/BetterChef/raw/main/assets/glaze_knockback.gif)
 
-![sear demo](/assets/sear_demo.gif)
+![](https://github.com/calware/BetterChef/raw/main/assets/sear_demo.gif)
 
-![roll comparison](/assets/roll_comparison.gif)
+![](https://github.com/calware/BetterChef/raw/main/assets/roll_comparison.gif)
+
+![](/assets/glaze_knockback.gif)
+
+![](/assets/sear_demo.gif)
+
+![](/assets/roll_comparison.gif)
 
 ## Configuration
 Below is each change more precisely, along with the section and variable name (which can be found in the configuration file for BetterChef) that allows you to modify the values for each change (or disable certain changes altogether).
@@ -29,9 +35,11 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 - Fixed most cleaver bugs
 ### Configuration Options
 - **Dice Enabled** (bool, default: true) - Enable changes to this skill
-- **Dice Attack Duration** (float, default: 0.3f) - The time it takes before another cleaver becomes throwable
+- **Dice Attack Duration** (float, default: 0.3) - The time it takes before another cleaver becomes throwable
 - **Dice Raise Proc Coefficient** (bool, default: true) - Raise the proc coefficient on each cleaver
-- **Dice Proc Coefficient** (float, default: 1.0f) - Proc coefficient of each cleaver
+- **Dice Proc Coefficient** (float, default: 1.0) - Proc coefficient of each cleaver
+- **Dice Damage Coefficient** (float, default: 0) - The damage coefficient to apply to Dice cleavers (note: this setting is enabled upon a configured value greater than zero--default is 2.5)
+- **Dice Boosted Damage Coefficient** (float, default: 0) - The damage coefficient to apply to boosted Dice cleavers (note: this setting is enabled upon a configured value greater than zero--default is 2.5)
 
 ## Changes to Roll
 ### Overview
@@ -42,14 +50,14 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 ### Configuration Options
 - **Roll Enabled** (bool, default: true) - Enable changes to this skill
 - **Roll Scale Speed With Charge Tokens** (bool, default: true) - Increase the speed of roll for each stage of roll charge
-- **Roll Speed Multiplier** (float, default: 0.35f) - The multiplier applied to each roll charge
+- **Roll Speed Multiplier** (float, default: 0.35) - The multiplier applied to each roll charge
 - **Roll Scale Damage With Charge Tokens** (bool, default: true) - Increase the damage of roll for each stage of roll charge
-- **Roll Added Base Damage** (float, default: 6.0f) - The added base damage of roll for each stage of roll charge
-- **Roll Added Damage Multiplier** (float, default: 2.0f) - The added multiplier used in teh damage calculation for roll when factoring in added damage on each stage of roll charge
+- **Roll Added Base Damage** (float, default: 6.0) - The added base damage of roll for each stage of roll charge
+- **Roll Added Damage Multiplier** (float, default: 2.0) - The added multiplier used in the damage calculation for roll when factoring in added damage on each stage of roll charge
 - **Roll Increase Knockback** (bool, default: false) - Increase the knockback of roll
-- **Roll Increase Knockback Value** (float, default: 0.0f) - The increase in knockback of roll
+- **Roll Increase Knockback Value** (float, default: 0) - The increase in knockback of roll
 - **Roll Extend Duration** (bool, default: true) - Extend the roll duration for each stage of roll charge
-- **Roll Extend Duration Multiplier** (float, default: 0.3f) - The duration extension multiplier applied to roll for each stage of roll charge
+- **Roll Extend Duration Multiplier** (float, default: 0.3) - The duration extension multiplier applied to roll for each stage of roll charge
 - **Oil Trail** (bool, default: true) - Enables roll to leave a trail of oil when boosted by "Yes, Chef"
 - **Roll Can Cancel** (bool, default: true) - Allow the user to cancel roll mid-roll by hitting the activation button again
 
@@ -63,18 +71,19 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 - Can be canceled mid-Sear
 ### Configuration Options
 - **Sear Enabled** (bool, default: true) - Enable changes to this skill
-- **Sear Max Distance** (float, default: 22.0f) - The distance Sear should damage targets
+- **Sear Max Distance** (float, default: 22.0) - The distance Sear should damage targets
 - **Sear No Direction Lock** (bool, default: true) - Make Sear remain omnidirectional even during sprint
 - **Sear Factor in Distance when Applying Sear Damage** (bool, default: true) - Factor in distance when applying damage using Sear so that targets closer receive more damage than targets further away
-- **Sear Distance Damage Multiplier** (float, default: 3.0f) - Multiplier of how much damage should scale based on distance (the value here is the maximum damage multiplier one could achieve by being right next to an enemy)
+- **Sear Distance Damage Multiplier** (float, default: 3.0) - Multiplier of how much damage should scale based on distance (the value here is the maximum damage multiplier one could achieve by being right next to an enemy)
 - **Sear Apply Burning Damage Over Time** (bool, default: true) - Make the damage over time modifier for Sear apply additional fire damage for a longer period
-- **Sear Damage Over Time Value** (float, default: 10.0f) - The raw damage value applied on each tick to the Sear burning effect
-- **Sear Damage Over Time Duration** (float, default: 0.0f) - The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)
+- **Sear Damage Over Time Value** (float, default: 10.0) - The raw damage value applied on each tick to the Sear burning effect
+- **Sear Damage Over Time Duration** (float, default: 0) - The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)
 - **Sear Can Cancel** (bool, default: true) - Allow the user to cancel Sear mid-Sear by releasing the skill activation input
-- **Sear Base Exit Duration** (float, default: 0.4f) - Sear base exit duration
-- **Sear Base Flamethrower Duration** (float, default: 3.0f) - Sear base flamethrower duration
-- **Sear Tick Damage Coefficient** (float, default: 0.0f) - Sear tick damage coefficient (note: this setting is enabled upon a configured value greater than zero--default is 6)
-- **Sear Tick Frequency** (float, default: 0.0f) - Sear tick frequency (note: this setting is enabled upon a configured value greater than zero--default is 8)
+- **Sear Hold Mode** (bool, default: false) - Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)
+- **Sear Base Exit Duration** (float, default: 0.4) - Sear base exit duration
+- **Sear Base Flamethrower Duration** (float, default: 3.0) - Sear base flamethrower duration
+- **Sear Tick Damage Coefficient** (float, default: 0) - Sear tick damage coefficient (note: this setting is enabled upon a configured value greater than zero--default is 6)
+- **Sear Tick Frequency** (float, default: 0) - Sear tick frequency (note: this setting is enabled upon a configured value greater than zero--default is 8)
 
 ## Changes to Glaze
 ### Overview
@@ -90,7 +99,7 @@ You can find the configuration file for BetterChef within your BepInEx profile u
 - **Glaze Amplified Knockback Amount** (Int32, default: -800) - The amplified knockback applied to chef when firing Glaze (while looking downward)
 - **Glaze Knockback Suicide Prevention** (bool, default: true) - Remove knockback from Glaze when looking upwards, reducing the chance of applying too much knockback while already falling resulting in accidental suicide
 - **Glaze Knockback Always**  (bool, false) - Always apply knockback when using Glaze regardless of if the user is in the air or not
-- **Glaze Damage Coefficient**  (float, 3.0f) - Damage coefficient for each ball of Glaze oil (default is 3 which means 300% damage)
+- **Glaze Damage Coefficient**  (float, 3.0) - Damage coefficient for each ball of Glaze oil (default is 3 which means 300% damage)
 
 ## Comparisons to StormTweaks
 - "Chef" renaming to capitalized "CHEF" removed
@@ -117,6 +126,17 @@ Including these assemblies within the existing project directory at `StormTweaks
 - Occasionally it appears multiple cleavers can be incorrectly thrown in rapid succession
 - Chef's cleaver icons have disappeared from the default crosshair reticle
 - Glaze knockback, while experiencing lag in a multiplayer game, may launch you much further than was intended
+- Sometimes after sprinting the cleaver icons reappear on the crosshair reticle but only for a frame or two
+- BetterChef and StormTweaks may not be compatible with a few specific multiplayer mods, and can result in a loss or reordering of player skills in the menu
+- Various bugs with the boosted Sear damage-over-time effect and its associated animations have been documented
+- Situations where custom mod descriptions for BetterChef's skills are not correctly appearing have been documented and partially fixed
+- StormTweaks issues with cleavers throwing too quickly or not venturing far enough while the input activation button is briefly pressed are present in our version as well
+
+## Notes about Configuration Editor Mods
+If you are using a mod to dynamically edit your mod configuration files while in-game, such as RiskOfOptions, know that it's not currently possible to dynamically enable/disable changes to Chef's skills without restarting the game.
+
+## Notes about Compatibility with StormTweaks
+While our mod does appear to be compatible with StormTweaks, know the configuration of both mods will have a hand in how well they work together. For instance, both mods will place hooks on the game's functions to modify their behavior, so you wouldn't want to have both mods place these hooks for skills that only one should be modifying. A workflow we're seeing more regularly is to disable all changes to Chef from within StormTweaks while leaving all of the changes to Seeker/FalseSon. Note that many combinations are untested, and some mixed changes from both mods to Chef may be possible.
 
 # Acknowledgements
 - Thank you to [pseudopulse's StormTweaks mod](https://thunderstore.io/package/pseudopulse/StormTweaks/), which this project is largely based on

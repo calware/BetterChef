@@ -7,6 +7,8 @@ build
 MassiveFraud.zip
 StormTweaks/*.dll
 
+BetterChefPkg.zip
+
 ## Standard Visual Studio .gitignore defintions
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
