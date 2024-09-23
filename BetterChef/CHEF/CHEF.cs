@@ -19,6 +19,8 @@ namespace StormTweaks {
             public static bool DiceEnabled => Bind<bool>("CHEF: Dice", "Dice Enabled", "Enable changes to this skill?", true);
             public static bool DiceRaiseProcCoefficient => Bind<bool>("CHEF: Dice", "Dice Raise Proc Coefficient", "Raise the proc coefficient on each cleaver", true);
             public static float DiceProcCoefficient => Bind<float>("CHEF: Dice", "Dice Proc Coefficient", "Proc coefficient of each cleaver (default is 0.5)", 1.0f);
+            public static float DiceDamageCoefficient => Bind<float>("CHEF: Dice", "Dice Damage Coefficient", "The damage coefficient to apply to Dice cleavers (note: this setting is enabled upon a configured value greater than zero--default is 2.5)", 0.0f);
+            public static float DiceBoostedDamageCoefficient => Bind<float>("CHEF: Dice", "Dice Boosted Damage Coefficient", "The damage coefficient to apply to boosted Dice cleavers (note: this setting is enabled upon a configured value greater than zero--default is 2.5)", 0.0f);
             public static float SpecialCooldown => Bind<float>("CHEF: Yes Chef", "Special Cooldown", "Lower the cooldown of the alternate special.", 8f);
             public static bool InterruptableSkills => Bind<bool>("CHEF: General", "Skill Interrupts", "Make CHEF skills be able to interrupt each other.", true);
             public static bool RollEnabled => Bind<bool>("CHEF: Roll", "Roll Enabled", "Enable changes to this skill?", true);
@@ -42,7 +44,7 @@ namespace StormTweaks {
             public static float SearDamageOverTimeValue => Bind<float>("CHEF: Sear", "Sear Damage Over Time Value", "The raw damage value applied on each tick to the Sear burning effect", 10.0f);
             public static float SearDamageOverTimeDuration => Bind<float>("CHEF: Sear", "Sear Damage Over Time Duration", "The duration applied to the Sear burning effect (note: this is a raw DoT duration value, which is *NOT* the amount of seconds the effect will persist for)", 0.0f);
             public static bool SearCanCancel => Bind<bool>("CHEF: Sear", "Sear Can Cancel", "Allow the user to cancel Sear mid-Sear by either releasing the skill activation input (in hold mode), or by activating the skill again (in toggle mode)", true);
-            // public static bool SearHoldMode => Bind<bool>("CHEF: Sear", "Sear Hold Mode", "Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)", false);
+            public static bool SearHoldMode => Bind<bool>("CHEF: Sear", "Sear Hold Mode", "Enabling Sear requires the user hold down the Sear skill input activation (disabling this setting will put Sear into toggle activation mode)", false);
             public static float SearBaseExitDuration => Bind<float>("CHEF: Sear", "Sear Base Exit Duration", "Sear base exit duration", 0.4f);
             public static float SearBaseFlamethrowerDuration => Bind<float>("CHEF: Sear", "Sear Base Flamethrower Duration", "Sear base flamethrower duration", 3.0f);
             public static float SearTickDamageCoefficient => Bind<float>("CHEF: Sear", "Sear Tick Damage Coefficient", "Sear tick damage coefficient (note: this setting is enabled upon a configured value greater than zero--default is 6)", 0.0f);
@@ -138,9 +140,6 @@ namespace StormTweaks {
                     {
                         IL.EntityStates.Chef.Sear.FirePrimaryAttack += Sear_FirePrimaryAttack;
                     }
-
-                    // Determine whether or not the user wants to put this into toggle mode (NOTE: THIS WILL REQUIRE A CHANGE TO THE SEAR CAN CANCEL SETTING)
-                    // Paths.SkillDef.ChefSear.mustKeyPress = true; // SearHoldMode;
                 }
 
                 if (Settings.DiceRaiseProcCoefficient)
@@ -379,10 +378,20 @@ namespace StormTweaks {
             // allow the user to cancel sear
             if (Settings.SearCanCancel)
             {
-                // toggle mode here...
-                if (self.inputBank.skill2.down == false)
+                // hold mode is only specified in the case of canceling anyway...
+                if (Settings.SearHoldMode)
                 {
-                    self.flamethrowerDuration = 0;
+                    if (self.inputBank.skill2.down == false)
+                    {
+                        self.flamethrowerDuration = 0;
+                    }
+                }
+                else
+                {
+                    if (self.age >= 0.3f && self.inputBank.skill2.wasDown == false && self.inputBank.skill2.justPressed == true)
+                    {
+                        self.flamethrowerDuration = 0;
+                    }
                 }
             }
 
@@ -448,6 +457,16 @@ namespace StormTweaks {
 
         private static void Dice_OnEnter(On.EntityStates.Chef.Dice.orig_OnEnter orig, Dice self)
         {
+            if (Settings.DiceDamageCoefficient > 0)
+            {
+                self.damageCoefficient = Settings.DiceDamageCoefficient;
+            }
+
+            if (Settings.DiceBoostedDamageCoefficient > 0)
+            {
+                self.boostedDamageCoefficient = Settings.DiceBoostedDamageCoefficient;
+            }
+
             orig(self);
 
             ChefCleaverStorage.Reset(self.characterBody, self.chefController.yesChefHeatActive ? 0.8f : 0.4f);
